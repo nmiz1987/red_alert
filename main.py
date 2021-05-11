@@ -30,6 +30,7 @@ while True:
                 print('@' * 40)
 
     print('-' * 40)
+    print("All alerts:\n")
     for i in data[:30]:
         print(i.get('alertDate') + '\t' + i.get('data'))
     time.sleep(10)
