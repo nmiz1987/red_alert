@@ -25,8 +25,12 @@ requests.get(base + "server start running...")
 
 try:
     while True:
-        response = urllib.request.urlopen(url);
-        data = json.loads(response.read().decode("utf-8"))
+        page = urllib.request.Request(url,headers={'User-Agent': 'Mozilla/5.0'}) 
+        infile = urllib.request.urlopen(page).read()
+        data = infile.decode("utf-8") # Read the content as string decoded with ISO-8859-1
+        
+        #response = urllib.request.urlopen(url);
+        #data = json.loads(response.read().decode("utf-8"))
         # only my zone
         for i in data[:40]:
             if i.get('data') in loc: # if in my zone
