@@ -21,6 +21,8 @@ loc = ['גיאה', 'בית שקמה', 'תלמי יפה', 'בת הדר']
 url = 'https://www.oref.org.il/WarningMessages/History/AlertsHistory.json'
 base = environ['key']
 
+requests.get("server start running...")
+
 try:
     while True:
         response = urllib.request.urlopen(url);
