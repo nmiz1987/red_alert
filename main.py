@@ -41,9 +41,11 @@ try:
 
         print('-' * 40)
         # all zones
-        for i in data[:21]:
+        for i in data[:1]:
             if first_run == False:
-                # msg_time = i.get('alertDate')[11:]
+                msg_time = i.get('alertDate')[11:]
+                info_msg = "צבע אדום!\nשעה " + msg_time + ':\t מיקום:' + str(i.get('data')).lstrip()
+                requests.get(base + info_msg)
                 info = i.get('alertDate') +'\t'+ i.get('data')
                 # requests.get(base + info)
                 print(info)
