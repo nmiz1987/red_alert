@@ -25,7 +25,7 @@ try:
     while True:
         response = urllib.request.urlopen(url);
         data = json.loads(response.read().decode("utf-8"))
-        # my zone
+        # only my zone
         for i in data[:40]:
             if i.get('data') in loc: # if in my zone
                 if i not in last_alert: # if new alert
