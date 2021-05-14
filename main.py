@@ -25,7 +25,7 @@ requests.get(base + "server start running...")
 
 try:
     while True:
-        response = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        response = urllib.request.urlopen(url)
         data = json.loads(response.read().decode("utf-8"))
         # only my zone
         for i in data[:40]:
@@ -40,15 +40,6 @@ try:
                         print('@' * 40)
 
         print('-' * 40)
-        # all zones
-        for i in data[:1]:
-            if first_run == False:
-                msg_time = i.get('alertDate')[11:]
-                info_msg = "צבע אדום!\nשעה " + msg_time + ':\t מיקום:' + str(i.get('data')).lstrip()
-                requests.get(base + info_msg)
-                info = i.get('alertDate') +'\t'+ i.get('data')
-                # requests.get(base + info)
-                print(info)
         first_run = False
         time.sleep(5)
         screen_clear()
