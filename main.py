@@ -1,5 +1,5 @@
-import urllib.request
 import json
+import bs4 as bs4
 import requests
 import time
 import os
@@ -25,18 +25,15 @@ requests.get(base + "server start running...")
 
 try:
     while True:
-        user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
-        headers = {'User-Agent': user_agent, }
-        request = urllib.request.Request(url, None, headers)  # The assembled request
-        response = urllib.request.urlopen(request)
-        data = response.read()  # The data u need
-    
-    
-        #response = urllib.request.urlopen(url)
-        #data = json.loads(response.read().decode("utf-8"))
+        r = requests.get(url)
+        soup = bs4.BeautifulSoup(r.content, "html.parser")
+        data = json.loads(soup.decode("utf-8"))
         # only my zone
-        for i in data[:40]:
-            #if i.get('data') in loc: # if in my zone
+        for i in last_alert:
+            print(i)
+        print("------")
+        for i in data[:3]:
+            # if i.get('data') in loc: # if in my zone
                 if i not in last_alert: # if new alert
                     last_alert.pop(0) # pop from the list
                     last_alert.append(i) # add to the list
@@ -44,11 +41,8 @@ try:
                         msg_time = i.get('alertDate')[11:]
                         info = "צבע אדום!\nשעה " + msg_time + ':\t מיקום:' + str(i.get('data')).lstrip()
                         requests.get(base + info)
-                        #print('@' * 40)
-
-        print('-' * 40)
         first_run = False
         time.sleep(5)
-        screen_clear()
+        # screen_clear()
 finally:
     pass
