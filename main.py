@@ -26,8 +26,8 @@ requests.get(base + "server start running...")
 try:
     while True:
         r = requests.get(url)
-        soup = bs4.BeautifulSoup(r.content, "html.parser")
-        data = json.loads(soup.decode("utf-8"))
+        soup = bs4.BeautifulSoup(r.content, "html.parser").decode("utf-8")
+        data = json.loads(soup)
         # only my zone
         for i in last_alert:
             print(i)
