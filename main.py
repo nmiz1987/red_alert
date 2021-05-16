@@ -34,9 +34,6 @@ loc = ['גיאה', 'בית שקמה', 'תלמי יפה', 'בת הדר']
 
 url = 'https://www.oref.org.il/WarningMessages/History/AlertsHistory.json'
 
-
-requests.get(base + "server start running...")
-
 try:
 
     while True:
