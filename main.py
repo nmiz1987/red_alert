@@ -11,7 +11,7 @@ import os
 from os import environ
 
 
-url = 'https://www.oref.org.il/WarningMessages/History/AlertsHistory.json'
+url = 'https://www.google.com'
 url2 = 'https://www.oref.org.il/WarningMessages/History/AlertsHistory.json'
 try:
 
