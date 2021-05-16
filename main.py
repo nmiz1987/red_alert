@@ -18,7 +18,7 @@ try:
         data = json.loads(response.read().decode("utf-8"))
         
         print(soup)
-        time.sleep(5)
+        time.sleep(10)
 
 finally:
 
